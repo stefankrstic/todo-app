@@ -1,6 +1,4 @@
-import { markCompleted, markIncomplete, removeTodo, toggleTodo } from "@/redux/actions";
-import { FaToggleOff } from "react-icons/fa";
-import { FaToggleOn } from "react-icons/fa";
+import { markCompleted, markIncomplete, removeTodo } from "@/redux/actions";
 import { useDispatch } from "react-redux";
 import { FaCheck } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
@@ -15,18 +13,6 @@ export default function TodoItem({ todo, index }) {
         <span className={`mr-4 ${todo.completed ? "line-through text-red-500" : ""}`}>{todo.text}</span>
       </div>
       <div className="space-x-3 ml-8">
-        <button
-          onClick={() => dispatch(toggleTodo(index))}
-          className="mr-2 text-sm bg-blue-500 text-white sm:px-2 py-1 px-1 rounded"
-        >
-          {todo.completed ? <FaToggleOff /> : <FaToggleOn />}
-        </button>
-        <button
-          onClick={() => dispatch(removeTodo(index))}
-          className="mr-2 text-sm bg-red-500 text-white sm:px-2 py-1 px-1 rounded"
-        >
-          <FaTrash />
-        </button>
         {!todo.completed && (
           <button
             onClick={() => dispatch(markCompleted(index))}
@@ -43,6 +29,12 @@ export default function TodoItem({ todo, index }) {
             <FaTimes />
           </button>
         )}
+        <button
+          onClick={() => dispatch(removeTodo(index))}
+          className="mr-2 text-sm bg-red-500 text-white sm:px-2 py-1 px-1 rounded"
+        >
+          <FaTrash />
+        </button>
       </div>
     </li>
   );
