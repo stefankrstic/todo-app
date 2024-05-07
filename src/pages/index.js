@@ -1,7 +1,11 @@
+import { Provider } from "react-redux";
+import store from "@/redux/store";
+import Todo from "@/components/Todo";
+
 export default function Home() {
   return (
-    <main>
-      <h1 className="text-5xl font-bold">Todo</h1>
-    </main>
+    <Provider store={store}>
+      <Todo />
+    </Provider>
   );
 }
