@@ -4,6 +4,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import FilterButton from "./FilterButton";
+import TodoList from "./TodoList";
 
 export default function Todo() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ export default function Todo() {
           </button>
         </div>
       </div>
+      <TodoList />
     </div>
   );
 }
