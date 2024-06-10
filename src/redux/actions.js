@@ -6,7 +6,7 @@ import {
   MARK_INCOMPLETE,
   REMOVE_TODO,
   TOGGLE_TODO,
-  UPDATA_SERACH_TERM,
+  UPDATE_SERACH_TERM,
 } from "./actionTypes";
 
 export const addTodo = (text) => ({
@@ -44,6 +44,6 @@ export const markAllCompleted = () => ({
 });
 
 export const updateSearchTerm = (searchTerm) => ({
-  type: UPDATA_SERACH_TERM,
+  type: UPDATE_SERACH_TERM,
   payload: { searchTerm },
 });

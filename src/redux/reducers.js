@@ -6,7 +6,7 @@ import {
   MARK_INCOMPLETE,
   REMOVE_TODO,
   TOGGLE_TODO,
-  UPDATA_SERACH_TERM,
+  UPDATE_SERACH_TERM,
 } from "./actionTypes";
 
 const initialState = {
@@ -60,7 +60,7 @@ const todoReducer = (state = initialState, action) => {
         searchTerm: state.searchTerm,
       };
 
-    case UPDATA_SERACH_TERM:
+    case UPDATE_SERACH_TERM:
       return {
         todos: state.todos,
         filter: state.filter,

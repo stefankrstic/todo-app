@@ -8,7 +8,7 @@ import TodoList from "./TodoList";
 
 export default function Todo() {
   const dispatch = useDispatch();
-  const [newTodoText, setNewTodotext] = useState("");
+  const [newTodoText, setNewTodoText] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleAddTodo = (text) => {
@@ -18,7 +18,7 @@ export default function Todo() {
   const handleAddTodoClick = () => {
     if (newTodoText.trim() !== "") {
       handleAddTodo(newTodoText.trim());
-      setNewTodotext("");
+      setNewTodoText("");
     }
   };
 
@@ -26,17 +26,24 @@ export default function Todo() {
     setSearchTerm(value);
     dispatch(updateSearchTerm(value));
   };
+
+  const handleUserKeyPress = (e) => {
+    if(e.key === "Enter" && newTodoText.trim() !== "") {
+      handleAddTodo(newTodoText.trim());
+      setNewTodoText("");
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto sm:mt-8 p-4 bg-gray-100 rounded">
       <h2 className="mt-3 mb-6 text-2xl font-bold text-center uppercase">Todo App</h2>
 
-      <div className="flex itmes-center mb-4">
+      <div className="flex items-center mb-4">
         <input
           value={newTodoText}
-          onChange={(e) => setNewTodotext(e.target.value)}
+          onChange={(e) => setNewTodoText(e.target.value)}
           type="text"
-          name="addInput"
-          id="addInput"
+          onKeyDown={handleUserKeyPress}
           placeholder="Add Todo"
           className="flex-grow p-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500"
         />
@@ -48,15 +55,13 @@ export default function Todo() {
         </button>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
         <FilterButton />
         <div className="flex items-center mb-4">
           <input
             value={searchTerm}
             onChange={(e) => handleSearchChange(e.target.value)}
             type="text"
-            name="addInput"
-            id="addInput"
             placeholder="search"
             className="flex-grow p-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500"
           />

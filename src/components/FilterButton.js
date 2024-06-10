@@ -9,7 +9,7 @@ export default function FilterButton() {
     dispatch(filterTodos(filter));
   };
   return (
-    <div className="flex space-x-4 itmes-center">
+    <div className="flex space-x-4 items-center mb-4">
       <select
         value={currentFilter}
         onChange={(e) => handleFilter(e.target.value)}
